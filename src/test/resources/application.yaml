@@ -1,0 +1,9 @@
+spring:
+  flyway:
+    create-schemas: true
+    enabled: true
+    fail-on-missing-locations: true
+
+logging:
+  level:
+    org.springframework.jdbc.core: TRACE

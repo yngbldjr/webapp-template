@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: ${DB_HOST}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  flyway:
+    create-schemas: true
+    url: ${DB_HOST}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    enabled: true
+    fail-on-missing-locations: true
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+#  kafka:
+#    properties:
+#      schema:
+#        registry:
+#          url: ${SCHEMA_REGISTRY_URL:http://localhost:7081}
+#    consumer:
+#      auto-startup: ${CONSUMER_AUTO_STARTUP:true}
+#      group-id: sample-service-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
+#  profiles:
+#    # Allows us to load additional application-<env>.yml configurations by setting
+#    # SPRING_PROFILE=<env> on our host
+#    # Defaults to msk kafka
+#    active: ${SPRING_PROFILE:msk}
+#  main:
+#    banner-mode: off
