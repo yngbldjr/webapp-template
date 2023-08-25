@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.transaction.annotation.Transactional
 import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.containers.RabbitMQContainer
 import org.testcontainers.junit.jupiter.Container
 
 @RunWith(SpringRunner::class)
@@ -23,8 +22,8 @@ abstract class AbstractContainerTests : NoCoLogging {
     @Container
     private val postgreSQLContainer = PostgreSQLContainer<Nothing>("postgres:latest")
 
-    @Container
-    var rabbitMQContainer: RabbitMQContainer = RabbitMQContainer("rabbitmq:3")
+//    @Container
+//    var rabbitMQContainer: RabbitMQContainer = RabbitMQContainer("rabbitmq:3")
   }
 
   internal class Initializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
@@ -36,14 +35,14 @@ abstract class AbstractContainerTests : NoCoLogging {
         "spring.datasource.password=${postgreSQLContainer.password}"
       ).applyTo(configurableApplicationContext.environment)
 
-      rabbitMQContainer.start()
-
-      TestPropertyValues.of(
-        "spring.rabbitmq.host=${rabbitMQContainer.host}",
-        "spring.rabbitmq.port=${rabbitMQContainer.amqpPort}",
-        "spring.rabbitmq.username=${rabbitMQContainer.adminUsername}",
-        "spring.rabbitmq.password=${rabbitMQContainer.adminPassword}"
-      ).applyTo(configurableApplicationContext.environment)
+//      rabbitMQContainer.start()
+//
+//      TestPropertyValues.of(
+//        "spring.rabbitmq.host=${rabbitMQContainer.host}",
+//        "spring.rabbitmq.port=${rabbitMQContainer.amqpPort}",
+//        "spring.rabbitmq.username=${rabbitMQContainer.adminUsername}",
+//        "spring.rabbitmq.password=${rabbitMQContainer.adminPassword}"
+//      ).applyTo(configurableApplicationContext.environment)
     }
   }
 }

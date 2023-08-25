@@ -77,7 +77,7 @@ val openAPIVersion = "1.7.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
+//	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -121,10 +121,10 @@ dependencies {
 	// Testcontainers
 	testImplementation("org.testcontainers:junit-jupiter:1.17.6")
 	testImplementation("org.testcontainers:postgresql:1.17.6")
-	testImplementation("org.testcontainers:rabbitmq:1.19.0")
+//	testImplementation("org.testcontainers:rabbitmq:1.19.0")
 
 	testImplementation("io.projectreactor:reactor-test")
-	testImplementation("org.springframework.amqp:spring-rabbit-test")
+//	testImplementation("org.springframework.amqp:spring-rabbit-test")
 
 
 

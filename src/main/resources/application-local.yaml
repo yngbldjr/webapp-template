@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: ${DB_HOST}
+    url: ${DB_HOST:jdbc:postgresql://localhost:5432/postgres}
     driverClassName: org.postgresql.Driver
 
   flyway:
     create-schemas: true
-    url: ${DB_HOST}
+    url: ${DB_HOST:jdbc:postgresql://localhost:5432/postgres}
     enabled: true
     fail-on-missing-locations: true
 
