@@ -1,21 +1,15 @@
 package com.youngblood.webapp
 
-import io.klogging.NoCoLogging
 import io.klogging.config.DEFAULT_CONSOLE
 import io.klogging.config.loggingConfiguration
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
-import org.springframework.amqp.core.AmqpAdmin
-import org.springframework.amqp.core.Queue
-import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.annotation.PostConstruct
 
 @SpringBootApplication
 class WebappApplication
@@ -32,31 +26,30 @@ class WebappController {
   @ApiResponse(responseCode = "200", description = "Get Billing Decision Support info for RQ.")
   @GetMapping(value = ["/sample"])
   suspend fun responseData(): ResponseEntity<ServiceResponse> = ResponseEntity.ok(ServiceResponse("Something"))
-
 }
 
 data class ServiceResponse(val data: Any)
 
-@Component
-class RabbitMQListener(val amqpAdmin: AmqpAdmin) : NoCoLogging {
-
-  // TODO : Auto Create queues if needed - can remove and/or only create in dev mode....
-  @PostConstruct
-  fun createQueues() {
-    println("Create Queues")
-    with(amqpAdmin) {
-      // Make this loop over all queues if needed
-      this.getQueueInfo("incomingEvent").let { queueInfo ->
-        if (queueInfo == null) {
-          this.declareQueue(Queue("incomingEvent", true))
-        }
-      }
-    }
-  }
-
-  @RabbitListener(queues = ["incomingEvent"])
-  fun onEvent(event: String) {
-    println("Event $event")
-    logger.info("Received and event: $event")
-  }
-}
+// @Component
+// class RabbitMQListener(val amqpAdmin: AmqpAdmin) : NoCoLogging {
+//
+//  // TODO : Auto Create queues if needed - can remove and/or only create in dev mode....
+//  @PostConstruct
+//  fun createQueues() {
+//    println("Create Queues")
+//    with(amqpAdmin) {
+//      // Make this loop over all queues if needed
+//      this.getQueueInfo("incomingEvent").let { queueInfo ->
+//        if (queueInfo == null) {
+//          this.declareQueue(Queue("incomingEvent", true))
+//        }
+//      }
+//    }
+//  }
+//
+//  @RabbitListener(queues = ["incomingEvent"])
+//  fun onEvent(event: String) {
+//    println("Event $event")
+//    logger.info("Received and event: $event")
+//  }
+// }

@@ -15,7 +15,7 @@ plugins {
 	kotlin("plugin.spring") version "1.8.22"
 	id("com.diffplug.spotless") version "6.11.0"
 	id("org.sonarqube") version "3.1.1"
-	id("org.flywaydb.flyway") version "9.14.1"
+//	id("org.flywaydb.flyway") version "9.14.1"
 	id("com.adarshr.test-logger") version "3.2.0"
 	id("org.jetbrains.kotlinx.kover") version "0.6.1"
 	// Documentation
@@ -77,12 +77,12 @@ val openAPIVersion = "1.7.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
+//	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
-	implementation("org.flywaydb:flyway-core")
+//	implementation("org.flywaydb:flyway-core")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
@@ -93,8 +93,8 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-webflux-core:$openAPIVersion")
 
 	// Exposed ORM
-	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.41.1")
-	implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.41.1")
+//	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.41.1")
+//	implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.41.1")
 
 	// Arrow
 	implementation("io.arrow-kt:arrow-core:1.2.0-RC")
@@ -131,9 +131,9 @@ dependencies {
 
 }
 
-flyway {
-	url = "jdbc:postgresql://localhost:5432/postgres"
-}
+//flyway {
+//	url = "jdbc:postgresql://localhost:5432/postgres"
+//}
 
 tasks.withType<BootJar> {
 	// to play it safe, we're setting this from IGNORE to FAIL,
